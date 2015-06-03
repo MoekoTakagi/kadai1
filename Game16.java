@@ -5,8 +5,8 @@
 import java.util.*;
 import java.io.*;
 public class Game16{
-	static char[][] dictionary = new char[300000][16];
-	static char[][] normalDictionary = new char[300000][16];
+	static char[][] dictionary = new char[235886][16];
+	static char[][] normalDictionary = new char[235886][16];
 	public static void main(String[] args) throws IOException{
 		//入力
 		System.out.println("16文字のアルファベットを入力してください。");
@@ -20,13 +20,21 @@ public class Game16{
 		//辞書
 		//辞書と比較して、その言葉の添字を返す
 		int[] number = new int[3];
+		BufferedReader br = new BufferedReader(new FileReader("/usr/share/dict/words"));//辞書から読み込み		
+		String line = "";
+		while((line = br.readLine()) != null){			
+			line = line.toLowerCase();
+			normalDictionary[number[1]] = line.toCharArray();//普通の辞書を配列に格納
+			dictionary[number[1]] = sort(line);
+			number[1]++;
+		}
+		br.close();
 		number = compareToDictionary(words);
 		//numberには、辞書の該当する添字が入っている
-//		System.out.println(number);
 
 		//普通の辞書で値を返す。
 		//もし当てはまらなかったら15文字で考える
-		char[] words1 = new char[15];
+		char[] words1 = new char[5];
 		if(number[2] == 0){
 			for(int h = 0; h < words.length; h++){
 				int m = 0;
@@ -80,7 +88,7 @@ public class Game16{
 			}
 		}
 		//12文字
-		char[] words4 = new char[5];
+		char[] words4 = new char[12];
 		if(number[2] == 0){
 			for(int h = 0; h < words.length; h++){
 				for(int j = h+1; j < words.length; j++){
@@ -103,7 +111,33 @@ public class Game16{
 				if(number[2] != 0)break;
 			}
 		}
-
+		//11文字
+		char[] words5 = new char[5];
+		if(number[2] == 0){
+			for(int h = 0; h < words.length; h++){
+				for(int j = h+1; j < words.length; j++){
+					for(int k = j+1; k < words.length; k++){
+						for(int n = k+1; n < words.length; n++){
+							for(int o = n+1; o < words.length;){
+								int m = 0;
+								for(int l = 0; l < words.length; l++){
+									if(h != l && j != l && k != l && n != l && o != l){
+										words5[m] = words[l];
+										m++;
+									}
+								}
+								number = compareToDictionary(words5);
+								if(number[2] != 0)break;
+							}
+							if(number[2] != 0)break;
+						}
+						if(number[2] != 0)break;
+					}
+					if(number[2] != 0)break;
+				}
+				if(number[2] != 0)break;
+			}
+		}
 
 
 		System.out.print("見つかった単語は");
@@ -114,31 +148,22 @@ public class Game16{
 	}
 	//辞書と比較
 	static int[] compareToDictionary(char[] words) throws IOException{
-		//i[0]は普通の辞書、i[1]はソートした辞書、i[2]は文字のあった場所
+		//i[1]は普通の辞書とソートした辞書、i[2]は文字のあった場所
 		int[] i = new int[3];
-		BufferedReader br = new BufferedReader(new FileReader("/usr/share/dict/words"));//辞書から読み込み		
-		String line = "";
-		while((line = br.readLine()) != null){			
-			line = line.toLowerCase();
-			normalDictionary[i[0]] = line.toCharArray();//普通の辞書を配列に格納
-			dictionary[i[1]] = sort(line);
-			if(dictionary[i[1]].length >= words.length){
-				for(int j = 0; j < words.length; j++){
-					if(Arrays.equals(dictionary[i[1]], words) == true){
-						i[2] = i[1];			
-					}
+		while(true){
+			if(i[2] != 0 || i[1] == 235886){
+				break;
+			}else if(dictionary[i[1]].length >= words.length){
+				if(Arrays.equals(dictionary[i[1]], words) == true){
+					i[2] = i[1];			
 				}
 			}else{
-				for(int j = 0; j < dictionary[i[1]].length; j++){
-					if(Arrays.equals(dictionary[i[1]], words) == true){
-						i[2] = i[1];
-					}
+				if(Arrays.equals(dictionary[i[1]], words) == true){
+					i[2] = i[1];
 				}
 			}
-			i[0]++;
 			i[1]++;
 		}
-		br.close();
 		return i;
 	}
 	//Sort
