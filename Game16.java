@@ -26,22 +26,22 @@ public class Game16{
 
 		//普通の辞書で値を返す。
 		//もし当てはまらなかったら15文字で考える
-		char[] words1 = new char[5];
+		char[] words1 = new char[15];
 		if(number[2] == 0){
 			for(int h = 0; h < words.length; h++){
 				int m = 0;
 				for(int l = 0; l < words.length; l++){
 					if(h != l){
 						words1[m] = words[l];//新しい配列に、一文字少ない配列を作り直す
-//						System.out.println(words1[m]);
 						m++;
 					}
 				}
 				number = compareToDictionary(words1);
+				if(number[2] != 0)break;
 			}
 		}
 		//それでも当てはまらなかったら14文字
-		char[] words2 = new char[5];
+		char[] words2 = new char[14];
 		if(number[2] == 0){
 			for(int h = 0; h < words.length; h++){
 				for(int j = h+1; j < words.length; j++){
@@ -53,11 +53,13 @@ public class Game16{
 						}
 					}
 					number = compareToDictionary(words2);
+					if(number[2] != 0)break;
 				}
+				if(number[2] != 0)break;
 			}
 		}
 		//13文字
-		char[] words3 = new char[5];
+		char[] words3 = new char[13];
 		if(number[2] == 0){
 			for(int h = 0; h < words.length; h++){
 				for(int j = h+1; j < words.length; j++){
@@ -69,11 +71,36 @@ public class Game16{
 								m++;
 							}
 						}
-						System.out.println(words3);
 						number = compareToDictionary(words3);
-						System.out.println(number[2]);
+						if(number[2] != 0)break;
 					}
+					if(number[2] != 0)break;
 				}
+				if(number[2] != 0)break;
+			}
+		}
+		//12文字
+		char[] words4 = new char[5];
+		if(number[2] == 0){
+			for(int h = 0; h < words.length; h++){
+				for(int j = h+1; j < words.length; j++){
+					for(int k = j+1; k < words.length; k++){
+						for(int n = k+1; n < words.length; n++){
+							int m = 0;
+							for(int l = 0; l < words.length; l++){
+								if(h != l && j != l && k != l && n != l){
+									words4[m] = words[l];
+									m++;
+								}
+							}
+							number = compareToDictionary(words4);
+							if(number[2] != 0)break;
+						}
+						if(number[2] != 0)break;
+					}
+					if(number[2] != 0)break;
+				}
+				if(number[2] != 0)break;
 			}
 		}
 
