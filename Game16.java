@@ -14,36 +14,47 @@ public class Game16{
 		String str = sc.next();
 		str = str.toLowerCase();//小文字に変換
 		char[] words = sort(str);//Sortしてchar[]の配列chに代入
-		System.out.println(words);
+		System.out.print("ソート後は");
+		System.out.print(words);
+		System.out.println("です。");
 		//辞書
 		//辞書と比較して、その言葉の添字を返す
 		int[] number = new int[3];
-		number = compareToDictionary(words, number[2]);
+		number = compareToDictionary(words);
 		//numberには、辞書の該当する添字が入っている
 //		System.out.println(number);
 
 		//普通の辞書で値を返す。
-//		System.out.println(dictionary[number]);
-//		System.out.println(normalDictionary[number]);
 		//もし当てはまらなかったら15文字で考える
-		char[] words1 = new char[16];
+		char[] words1 = new char[15];
 		if(number[2] == 0){
 			for(int h = 0; h < words.length; h++){
 				int m = 0;
 				for(int l = 0; l < words.length; l++){
 					if(h != l){
 						words1[m] = words[l];//新しい配列に、一文字少ない配列を作り直す
-						System.out.println(words1[m]);
+//						System.out.println(words1[m]);
 						m++;
 					}
 				}
-				number = compareToDictionary(words1, number[2]);
-				System.out.println(number[2]);
+				number = compareToDictionary(words1);
 			}
 		}
+		if(number[2] == 0){
+			for()
+		}
+
+
+
+		System.out.print("見つかった単語は");
+		System.out.print(normalDictionary[number[2]]);
+		System.out.println("です。");
+		System.out.print(number[2]);
+		System.out.println("番目にありました。");
 	}
 	//辞書と比較
-	static int[] compareToDictionary(char[] words, int number) throws IOException{
+	static int[] compareToDictionary(char[] words) throws IOException{
+		//i[0]は普通の辞書、i[1]はソートした辞書、i[2]は文字のあった場所
 		int[] i = new int[3];
 		BufferedReader br = new BufferedReader(new FileReader("/usr/share/dict/words"));//辞書から読み込み		
 		String line = "";
