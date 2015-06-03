@@ -5,6 +5,10 @@
 import java.util.*;
 import java.io.*;
 public class Game16{
+	static int i = 0;
+	static int k = 0;
+	static char[][] dictionary = new char[300000][16];
+	static char[][] normalDictionary = new char[300000][16];
 	public static void main(String[] args) throws IOException{
 		//入力
 		System.out.println("16文字のアルファベットを入力してください。");
@@ -14,27 +18,39 @@ public class Game16{
 		char[] words = sort(str);//Sortしてchar[]の配列chに代入
 
 		//辞書
-		char[][] dictionary = new char[300000][16];
-		char[][] normalDictionary = new char[300000][16];
-		int i = 0;
-		int j = 0;
-		int k = 0;
 		BufferedReader br = new BufferedReader(new FileReader("/usr/share/dict/words"));//辞書から読み込み
-		String line = "";
 		//辞書と比較して、その言葉の添字を返す
 		int number = 0;
-		while((line = br.readLine()) != null){
+		number = compareToDictionary(words, br, number);
+		//numberには、辞書の該当する添字が入っている
+		System.out.println(number);
+
+		//普通の辞書で値を返す。
+		System.out.println(dictionary[number]);
+		System.out.println(normalDictionary[number]);
+		//もし当てはまらなかったら15文字で考える
+		if(number == 0){
+			for(int h = 0; h < words.length; h++){
+				words[h] = null;
+				number = compareToDictionary(words, br, number);
+			}
+		}
+	}
+	//辞書と比較
+	static int compareToDictionary(char[] words, BufferedReader br, int number) throws IOException{
+		String line = "";
+		while((line = br.readLine()) != null){			
 			line = line.toLowerCase();
 			normalDictionary[k] = line.toCharArray();//普通の辞書を配列に格納
 			dictionary[i] = sort(line);
 			if(dictionary[i].length >= words.length){
-				for(j = 0; j < words.length; j++){
+				for(int j = 0; j < words.length; j++){
 					if(Arrays.equals(dictionary[i], words) == true){
 						number = i;			
 					}
 				}
 			}else{
-				for(j = 0; j < dictionary[i].length; j++){
+				for(int j = 0; j < dictionary[i].length; j++){
 					if(Arrays.equals(dictionary[i], words) == true){
 						number = i;
 					}
@@ -44,13 +60,8 @@ public class Game16{
 			k++;
 		}
 		br.close();
-		//numberには、辞書の該当する添字が入っている
-		System.out.println(number);
-		//普通の辞書でまた探索して値を返す。
-		System.out.println(dictionary[number]);
-		System.out.println(normalDictionary[number]);
+		return number;
 	}
-	
 	//Sort
 	static char[] sort(String str){
 		char[] a = new char[str.length()];
