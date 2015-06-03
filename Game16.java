@@ -34,7 +34,7 @@ public class Game16{
 
 		//普通の辞書で値を返す。
 		//もし当てはまらなかったら15文字で考える
-		char[] words1 = new char[5];
+		char[] words1 = new char[15];
 		if(number[2] == 0){
 			for(int h = 0; h < words.length; h++){
 				int m = 0;
@@ -118,7 +118,7 @@ public class Game16{
 				for(int j = h+1; j < words.length; j++){
 					for(int k = j+1; k < words.length; k++){
 						for(int n = k+1; n < words.length; n++){
-							for(int o = n+1; o < words.length;){
+							for(int o = n+1; o < words.length; o++){
 								int m = 0;
 								for(int l = 0; l < words.length; l++){
 									if(h != l && j != l && k != l && n != l && o != l){
