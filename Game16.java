@@ -40,8 +40,21 @@ public class Game16{
 				number = compareToDictionary(words1);
 			}
 		}
+		//それでも当てはまらなかったら14文字
+		char[] words2 = new char[14];
 		if(number[2] == 0){
-			for()
+			for(int h = 0; h < words.length; h++){
+				for(int j = h+1; j < words.length; j++){
+					int m = 0;
+					for(int l = 0; l < words.length; l++){
+						if(h != l && j != l){
+							words2[m] = words[l];
+							m++;
+						}
+					}
+					number = compareToDictionary(words2);
+				}
+			}
 		}
 
 
