@@ -5,8 +5,6 @@
 import java.util.*;
 import java.io.*;
 public class Game16{
-	static int i = 0;
-	static int k = 0;
 	static char[][] dictionary = new char[300000][16];
 	static char[][] normalDictionary = new char[300000][16];
 	public static void main(String[] args) throws IOException{
@@ -16,51 +14,61 @@ public class Game16{
 		String str = sc.next();
 		str = str.toLowerCase();//小文字に変換
 		char[] words = sort(str);//Sortしてchar[]の配列chに代入
-
+		System.out.println(words);
 		//辞書
-		BufferedReader br = new BufferedReader(new FileReader("/usr/share/dict/words"));//辞書から読み込み
 		//辞書と比較して、その言葉の添字を返す
-		int number = 0;
-		number = compareToDictionary(words, br, number);
+		int[] number = new int[3];
+		number = compareToDictionary(words, number[2]);
 		//numberには、辞書の該当する添字が入っている
-		System.out.println(number);
+//		System.out.println(number);
 
 		//普通の辞書で値を返す。
-		System.out.println(dictionary[number]);
-		System.out.println(normalDictionary[number]);
+//		System.out.println(dictionary[number]);
+//		System.out.println(normalDictionary[number]);
 		//もし当てはまらなかったら15文字で考える
-		if(number == 0){
+		char[] words1 = new char[16];
+		if(number[2] == 0){
 			for(int h = 0; h < words.length; h++){
-				words[h] = null;
-				number = compareToDictionary(words, br, number);
+				int m = 0;
+				for(int l = 0; l < words.length; l++){
+					if(h != l){
+						words1[m] = words[l];//新しい配列に、一文字少ない配列を作り直す
+						System.out.println(words1[m]);
+						m++;
+					}
+				}
+				number = compareToDictionary(words1, number[2]);
+				System.out.println(number[2]);
 			}
 		}
 	}
 	//辞書と比較
-	static int compareToDictionary(char[] words, BufferedReader br, int number) throws IOException{
+	static int[] compareToDictionary(char[] words, int number) throws IOException{
+		int[] i = new int[3];
+		BufferedReader br = new BufferedReader(new FileReader("/usr/share/dict/words"));//辞書から読み込み		
 		String line = "";
 		while((line = br.readLine()) != null){			
 			line = line.toLowerCase();
-			normalDictionary[k] = line.toCharArray();//普通の辞書を配列に格納
-			dictionary[i] = sort(line);
-			if(dictionary[i].length >= words.length){
+			normalDictionary[i[0]] = line.toCharArray();//普通の辞書を配列に格納
+			dictionary[i[1]] = sort(line);
+			if(dictionary[i[1]].length >= words.length){
 				for(int j = 0; j < words.length; j++){
-					if(Arrays.equals(dictionary[i], words) == true){
-						number = i;			
+					if(Arrays.equals(dictionary[i[1]], words) == true){
+						i[2] = i[1];			
 					}
 				}
 			}else{
-				for(int j = 0; j < dictionary[i].length; j++){
-					if(Arrays.equals(dictionary[i], words) == true){
-						number = i;
+				for(int j = 0; j < dictionary[i[1]].length; j++){
+					if(Arrays.equals(dictionary[i[1]], words) == true){
+						i[2] = i[1];
 					}
 				}
 			}
-			i++;
-			k++;
+			i[0]++;
+			i[1]++;
 		}
 		br.close();
-		return number;
+		return i;
 	}
 	//Sort
 	static char[] sort(String str){
