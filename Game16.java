@@ -112,7 +112,7 @@ public class Game16{
 			}
 		}
 		//11文字
-		char[] words5 = new char[5];
+		char[] words5 = new char[11];
 		if(number[2] == 0){
 			for(int h = 0; h < words.length; h++){
 				for(int j = h+1; j < words.length; j++){
@@ -138,7 +138,69 @@ public class Game16{
 				if(number[2] != 0)break;
 			}
 		}
-
+		//10文字
+		char[] words6 = new char[10];
+		if(number[2] == 0){
+			for(int h = 0; h < words.length; h++){
+				for(int j = h+1; j < words.length; j++){
+					for(int k = j+1; k < words.length; k++){
+						for(int n = k+1; n < words.length; n++){
+							for(int o = n+1; o < words.length; o++){
+								for(int p = o+1; p < words.length; p++){
+									int m = 0;
+									for(int l = 0; l < words.length; l++){
+										if(h != l && j != l && k != l && n != l && o != l && p != l){
+											words6[m] = words[l];
+											m++;
+										}
+									}
+									number = compareToDictionary(words6);
+									if(number[2] != 0)break;
+								}
+								if(number[2] != 0)break;
+							}
+							if(number[2] != 0)break;
+						}
+						if(number[2] != 0)break;
+					}
+					if(number[2] != 0)break;
+				}
+				if(number[2] != 0)break;
+			}
+		}
+		//9文字,除去するのが7文字
+		char[] words7 = new char[5];
+		if(number[2] == 0){
+			for(int h = 0; h < words.length; h++){
+				for(int j = h+1; j < words.length; j++){
+					for(int k = j+1; k < words.length; k++){
+						for(int n = k+1; n < words.length; n++){
+							for(int o = n+1; o < words.length; o++){
+								for(int p = o+1; p < words.length; p++){
+									for(int q = p+1; q < words.length; q++){
+										int m = 0;
+										for(int l = 0; l < words.length; l++){
+											if(h != l && j != l && k != l && n != l && o != l && p != l && q != l){
+												words7[m] = words[l];
+												m++;
+											}
+										}
+										number = compareToDictionary(words7);
+										if(number[2] != 0)break;
+									}
+									if(number[2] != 0)break;
+								}
+								if(number[2] != 0)break;
+							}
+							if(number[2] != 0)break;
+						}
+						if(number[2] != 0)break;
+					}
+					if(number[2] != 0)break;
+				}
+				if(number[2] != 0)break;
+			}
+		}
 
 		System.out.print("見つかった単語は");
 		System.out.print(normalDictionary[number[2]]);
