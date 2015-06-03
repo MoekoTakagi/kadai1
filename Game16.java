@@ -56,6 +56,26 @@ public class Game16{
 				}
 			}
 		}
+		//13文字
+		char[] words3 = new char[5];
+		if(number[2] == 0){
+			for(int h = 0; h < words.length; h++){
+				for(int j = h+1; j < words.length; j++){
+					for(int k = j+1; k < words.length; k++){
+						int m = 0;
+						for(int l = 0; l < words.length; l++){
+							if(h != l && j != l && k != l){
+								words3[m] = words[l];
+								m++;
+							}
+						}
+						System.out.println(words3);
+						number = compareToDictionary(words3);
+						System.out.println(number[2]);
+					}
+				}
+			}
+		}
 
 
 
