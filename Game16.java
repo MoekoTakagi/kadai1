@@ -29,7 +29,7 @@ public class Game16{
 			number[1]++;
 		}
 		br.close();
-		number = compareToDictionary(words);
+//		number = compareToDictionary(words);
 		//numberには、辞書の該当する添字が入っている
 
 		//普通の辞書で値を返す。
@@ -48,6 +48,56 @@ public class Game16{
 				if(number[2] != 0)break;
 			}
 		}
+		//2文字
+		char[] words14 = new char[2];
+		if(number[2] == 0){
+			System.out.println("2");
+			for(int h = 0; h < words.length; h++){
+				for(int j = h+1; j < words.length; j++){
+					int m = 0;
+					words14[m] = words[h];
+					words14[m+1] = words[j];
+					System.out.println(words14);
+					number = compareToDictionary(words14);
+					System.out.println(number[2]);
+					if(number[2] != 0)break;
+				}
+				if(number[2] != 0)break;
+			}
+		}
+		System.out.println("END");
+
+		//5文字
+		char[] words11 = new char[5];
+		if(number[2] == 0){
+//			System.out.println("5");
+			for(int h = 0; h < words.length; h++){
+				for(int j = h+1; j < words.length; j++){
+					for(int k = j+1; k < words.length; k++){
+						for(int n = k+1; n < words.length; n++){
+							for(int o = n+1; o < words.length; o++){
+								int m = 0;
+								for(int l = 0; l < words11.length; l++){
+										words11[m] = words[l];
+										m++;
+										System.out.println(l);
+								}
+								number = compareToDictionary(words11);
+								System.out.println(words11);
+								if(number[2] != 0)break;
+							}
+							if(number[2] != 0)break;
+						}
+						if(number[2] != 0)break;
+					}
+					if(number[2] != 0)break;
+				}
+				if(number[2] != 0)break;
+			}
+		}
+//		System.out.println("end");
+
+		
 		//それでも当てはまらなかったら14文字
 		char[] words2 = new char[14];
 		if(number[2] == 0){
@@ -87,7 +137,7 @@ public class Game16{
 				if(number[2] != 0)break;
 			}
 		}
-		//12文字
+		//12文字クリア
 		char[] words4 = new char[12];
 		if(number[2] == 0){
 			for(int h = 0; h < words.length; h++){
@@ -111,7 +161,8 @@ public class Game16{
 				if(number[2] != 0)break;
 			}
 		}
-		//11文字
+
+		//11文字クリア
 		char[] words5 = new char[11];
 		if(number[2] == 0){
 			for(int h = 0; h < words.length; h++){
@@ -138,7 +189,7 @@ public class Game16{
 				if(number[2] != 0)break;
 			}
 		}
-		//10文字
+		//10文字クリア
 		char[] words6 = new char[10];
 		if(number[2] == 0){
 			for(int h = 0; h < words.length; h++){
@@ -168,7 +219,8 @@ public class Game16{
 				if(number[2] != 0)break;
 			}
 		}
-		//9文字,除去するのが7文字
+
+		//9文字,除去するのが7文字クリア
 		char[] words7 = new char[9];
 		if(number[2] == 0){
 			for(int h = 0; h < words.length; h++){
@@ -201,7 +253,7 @@ public class Game16{
 				if(number[2] != 0)break;
 			}
 		}
-		//8文字
+		//8文字クリア
 		char[] words8 = new char[8];
 		if(number[2] == 0){
 			for(int h = 0; h < words.length; h++){
@@ -237,6 +289,86 @@ public class Game16{
 				if(number[2] != 0)break;
 			}
 		}
+
+		//7文字クリア
+		char[] words9 = new char[7];
+		if(number[2] == 0){
+			for(int h = 0; h < words.length; h++){
+				for(int j = h+1; j < words.length; j++){
+					for(int k = j+1; k < words.length; k++){
+						for(int n = k+1; n < words.length; n++){
+							for(int o = n+1; o < words.length; o++){
+								for(int p = o+1; p < words.length; p++){
+									for(int q = p+1; q < words.length; q++){
+										int m = 0;
+										for(int l = 0; l < words9.length; l++){
+												words9[m] = words[l];
+												m++;
+										}
+										number = compareToDictionary(words9);
+										if(number[2] != 0)break;
+									}
+									if(number[2] != 0)break;
+								}
+								if(number[2] != 0)break;
+							}
+							if(number[2] != 0)break;
+						}
+						if(number[2] != 0)break;
+					}
+					if(number[2] != 0)break;
+				}
+				if(number[2] != 0)break;
+			}
+		}
+		//6文字
+		char[] words10 = new char[6];
+		if(number[2] == 0){
+			for(int h = 0; h < words.length; h++){
+				for(int j = h+1; j < words.length; j++){
+					for(int k = j+1; k < words.length; k++){
+						for(int n = k+1; n < words.length; n++){
+							for(int o = n+1; o < words.length; o++){
+								for(int p = o+1; p < words.length; p++){
+									int m = 0;
+									for(int l = 0; l < words10.length; l++){
+											words10[m] = words[l];
+											m++;
+									}
+									number = compareToDictionary(words10);
+									if(number[2] != 0)break;
+								}
+								if(number[2] != 0)break;
+							}
+							if(number[2] != 0)break;
+						}
+						if(number[2] != 0)break;
+					}
+					if(number[2] != 0)break;
+				}
+				if(number[2] != 0)break;
+			}
+		}				
+		//3文字
+		char[] words13 = new char[3];
+		if(number[2] == 0){
+			for(int h = 0; h < words.length; h++){
+				for(int j = h+1; j < words.length; j++){
+					for(int k = j+1; k < words.length; k++){
+						int m = 0;
+						for(int l = 0; l < words13.length; l++){
+								words13[m] = words[l];
+								m++;
+							}
+						
+						number = compareToDictionary(words13);
+						if(number[2] != 0)break;
+					}
+					if(number[2] != 0)break;
+				}
+				if(number[2] != 0)break;
+			}
+		}		
 
 		System.out.print("見つかった単語は");
 		System.out.print(normalDictionary[number[2]]);
