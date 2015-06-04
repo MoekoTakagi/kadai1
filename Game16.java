@@ -48,56 +48,6 @@ public class Game16{
 				if(number[2] != 0)break;
 			}
 		}
-		//2文字
-		char[] words14 = new char[2];
-		if(number[2] == 0){
-			System.out.println("2");
-			for(int h = 0; h < words.length; h++){
-				for(int j = h+1; j < words.length; j++){
-					int m = 0;
-					words14[m] = words[h];
-					words14[m+1] = words[j];
-					System.out.println(words14);
-					number = compareToDictionary(words14);
-					System.out.println(number[2]);
-					if(number[2] != 0)break;
-				}
-				if(number[2] != 0)break;
-			}
-		}
-		System.out.println("END");
-
-		//5文字
-		char[] words11 = new char[5];
-		if(number[2] == 0){
-//			System.out.println("5");
-			for(int h = 0; h < words.length; h++){
-				for(int j = h+1; j < words.length; j++){
-					for(int k = j+1; k < words.length; k++){
-						for(int n = k+1; n < words.length; n++){
-							for(int o = n+1; o < words.length; o++){
-								int m = 0;
-								for(int l = 0; l < words11.length; l++){
-										words11[m] = words[l];
-										m++;
-										System.out.println(l);
-								}
-								number = compareToDictionary(words11);
-								System.out.println(words11);
-								if(number[2] != 0)break;
-							}
-							if(number[2] != 0)break;
-						}
-						if(number[2] != 0)break;
-					}
-					if(number[2] != 0)break;
-				}
-				if(number[2] != 0)break;
-			}
-		}
-//		System.out.println("end");
-
-		
 		//それでも当てはまらなかったら14文字
 		char[] words2 = new char[14];
 		if(number[2] == 0){
@@ -265,12 +215,14 @@ public class Game16{
 									for(int q = p+1; q < words.length; q++){
 										for(int r = q+1; r < words.length; r++){
 											int m = 0;
-											for(int l = 0; l < words.length; l++){
-												if(h != l && j != l && k != l && n != l && o != l && p != l && q != l && r != l){
-													words8[m] = words[l];
-													m++;
-												}
-											}
+											words8[m] = words[h];
+											words8[m+1] = words[j];
+											words8[m+2] = words[k];
+											words8[m+3] = words[n];
+											words8[m+4] = words[o];
+											words8[m+5] = words[p];									
+											words8[m+6] = words[q];
+											words8[m+7] = words[r];
 											number = compareToDictionary(words8);
 											if(number[2] != 0)break;
 										}
@@ -289,8 +241,7 @@ public class Game16{
 				if(number[2] != 0)break;
 			}
 		}
-
-		//7文字クリア
+		//7文字
 		char[] words9 = new char[7];
 		if(number[2] == 0){
 			for(int h = 0; h < words.length; h++){
@@ -301,10 +252,13 @@ public class Game16{
 								for(int p = o+1; p < words.length; p++){
 									for(int q = p+1; q < words.length; q++){
 										int m = 0;
-										for(int l = 0; l < words9.length; l++){
-												words9[m] = words[l];
-												m++;
-										}
+										words9[m] = words[h];
+										words9[m+1] = words[j];
+										words9[m+2] = words[k];
+										words9[m+3] = words[n];
+										words9[m+4] = words[o];
+										words9[m+5] = words[p];									
+										words9[m+6] = words[q];
 										number = compareToDictionary(words9);
 										if(number[2] != 0)break;
 									}
@@ -321,6 +275,7 @@ public class Game16{
 				if(number[2] != 0)break;
 			}
 		}
+
 		//6文字
 		char[] words10 = new char[6];
 		if(number[2] == 0){
@@ -331,10 +286,12 @@ public class Game16{
 							for(int o = n+1; o < words.length; o++){
 								for(int p = o+1; p < words.length; p++){
 									int m = 0;
-									for(int l = 0; l < words10.length; l++){
-											words10[m] = words[l];
-											m++;
-									}
+									words10[m] = words[h];
+									words10[m+1] = words[j];
+									words10[m+2] = words[k];
+									words10[m+3] = words[n];
+									words10[m+4] = words[o];
+									words10[m+5] = words[p];
 									number = compareToDictionary(words10);
 									if(number[2] != 0)break;
 								}
@@ -348,7 +305,55 @@ public class Game16{
 				}
 				if(number[2] != 0)break;
 			}
-		}				
+		}		
+		//5文字
+		char[] words11 = new char[5];
+		if(number[2] == 0){
+			for(int h = 0; h < words.length; h++){
+				for(int j = h+1; j < words.length; j++){
+					for(int k = j+1; k < words.length; k++){
+						for(int n = k+1; n < words.length; n++){
+							for(int o = n+1; o < words.length; o++){
+								int m = 0;
+								words11[m] = words[h];
+								words11[m+1] = words[j];
+								words11[m+2] = words[k];
+								words11[m+3] = words[n];
+								words11[m+4] = words[o];
+								number = compareToDictionary(words11);
+								if(number[2] != 0)break;
+							}
+							if(number[2] != 0)break;
+						}
+						if(number[2] != 0)break;
+					}
+					if(number[2] != 0)break;
+				}
+				if(number[2] != 0)break;
+			}
+		}		
+		//4文字
+		char[] words12 = new char[4];
+		if(number[2] == 0){
+			for(int h = 0; h < words.length; h++){
+				for(int j = h+1; j < words.length; j++){
+					for(int k = j+1; k < words.length; k++){
+						for(int n = k+1; n < words.length; n++){
+							int m = 0;
+							words12[m] = words[h];
+							words12[m+1] = words[j];
+							words12[m+2] = words[k];
+							words12[m+3] = words[n];
+							number = compareToDictionary(words12);
+							if(number[2] != 0)break;
+						}
+						if(number[2] != 0)break;
+					}
+					if(number[2] != 0)break;
+				}
+				if(number[2] != 0)break;
+			}
+		}			
 		//3文字
 		char[] words13 = new char[3];
 		if(number[2] == 0){
@@ -356,16 +361,39 @@ public class Game16{
 				for(int j = h+1; j < words.length; j++){
 					for(int k = j+1; k < words.length; k++){
 						int m = 0;
-						for(int l = 0; l < words13.length; l++){
-								words13[m] = words[l];
-								m++;
-							}
-						
+						words13[m] = words[h];
+						words13[m+1] = words[j];
+						words13[m+2] = words[k];
 						number = compareToDictionary(words13);
 						if(number[2] != 0)break;
 					}
 					if(number[2] != 0)break;
 				}
+				if(number[2] != 0)break;
+			}
+		}			
+
+		//2文字
+		char[] words14 = new char[2];
+		if(number[2] == 0){
+			for(int h = 0; h < words.length; h++){
+				for(int j = h+1; j < words.length; j++){
+					int m = 0;
+					words14[m] = words[h];
+					words14[m+1] = words[j];
+					number = compareToDictionary(words14);
+					if(number[2] != 0)break;
+				}
+				if(number[2] != 0)break;
+			}
+		}
+		//1文字
+		char[] words15 = new char[1];
+		if(number[2] == 0){
+			for(int h = 0; h < words.length; h++){
+				int m = 0;
+				words15[m] = words[h];
+				number = compareToDictionary(words15);
 				if(number[2] != 0)break;
 			}
 		}		
